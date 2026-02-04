@@ -43,14 +43,8 @@ function save_image_upload(string $fieldName): ?string
     }
 
     $targetDir = __DIR__ . '/../uploads';
-    // Render runs in a container; ensure uploads exists and is writable.
     if (!is_dir($targetDir)) {
-        if (!mkdir($targetDir, 0775, true) && !is_dir($targetDir)) {
-            throw new RuntimeException("Uploads folder could not be created.");
-        }
-    }
-    if (!is_writable($targetDir)) {
-        throw new RuntimeException("Uploads folder is not writable.");
+        throw new RuntimeException("Uploads folder not found. Create /uploads.");
     }
 
     $newName = bin2hex(random_bytes(16)) . '.' . $ext;
