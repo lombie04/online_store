@@ -1,7 +1,7 @@
 FROM php:8.2-apache
 
 # Enable Apache rewrite + useful PHP extensions
-RUN a2enmod rewrite \
+RUN a2enmod rewrite headers \
  && docker-php-ext-install pdo pdo_mysql mysqli
 
 # Set Apache DocumentRoot to /var/www/html
