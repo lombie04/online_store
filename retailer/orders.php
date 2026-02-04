@@ -14,7 +14,7 @@ $stmt = $pdo->prepare("SELECT id, store_name FROM retailers WHERE user_id = ? LI
 $stmt->execute([(int)$u['id']]);
 $retailer = $stmt->fetch();
 $retailerId = $retailer ? (int)$retailer['id'] : 0;
-if ($retailerId <= 0) redirect('/business_store/retailer/pending.php');
+if ($retailerId <= 0) redirect('/retailer/pending.php');
 
 $status = trim((string)($_GET['status'] ?? ''));
 
@@ -60,8 +60,8 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
       <div class="muted">Store: <?php echo e($retailer['store_name']); ?></div>
     </div>
     <div>
-      <a href="/business_store/retailer/index.php">Retailer Home</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/retailer/index.php">Retailer Home</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -87,7 +87,7 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
     <tbody>
     <?php foreach ($orders as $o): ?>
       <tr>
-        <td><a href="/business_store/retailer/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
+        <td><a href="/retailer/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
         <td><span class="pill"><?php echo e($o['status']); ?></span></td>
         <td><?php echo e(number_format((float)$o['total_amount'], 2)); ?></td>
         <td><?php echo e((string)$o['created_at']); ?></td>
@@ -98,3 +98,4 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
 </div>
 </div>
 <?php layout_footer(); ?>
+

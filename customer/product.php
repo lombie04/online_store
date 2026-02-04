@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -26,7 +26,7 @@ $stmt->execute([$id]);
 $p = $stmt->fetch();
 
 if (!$p) {
-    redirect('/business_store/customer/index.php');
+    redirect('/customer/index.php');
 }
 ?>
 <?php layout_header('Customer - Product'); ?>
@@ -41,12 +41,12 @@ if (!$p) {
     a{color:#0b5ed7;text-decoration:none}
 </style>
 <div class="wrap">
-  <p><a href="/business_store/customer/index.php">Back to Storefront</a></p>
+  <p><a href="/customer/index.php">Back to Storefront</a></p>
 
   <div class="card">
     <div class="img">
       <?php if (!empty($p['image_path'])): ?>
-        <img src="/business_store/<?php echo e($p['image_path']); ?>" alt="">
+        <img src="/<?php echo e($p['image_path']); ?>" alt="">
       <?php else: ?>
         <div class="muted">No image</div>
       <?php endif; ?>
@@ -58,7 +58,7 @@ if (!$p) {
       <div class="price"><?php echo e(number_format((float)$p['price'], 2)); ?></div>
       <div class="muted">Stock: <?php echo e((string)$p['stock']); ?></div>
         <?php if ((int)$p['stock'] > 0): ?>
-            <form method="post" action="/business_store/customer/add_to_cart.php" style="margin-top:12px;">
+            <form method="post" action="/customer/add_to_cart.php" style="margin-top:12px;">
                 <input type="hidden" name="product_id" value="<?php echo (int)$p['id']; ?>">
                 <label style="display:block;margin-bottom:6px;">Quantity</label>
                 <input type="number" name="qty" min="1" max="<?php echo (int)$p['stock']; ?>" value="1" style="padding:10px;border:1px solid #ccd2da;border-radius:8px;width:120px;">
@@ -72,3 +72,4 @@ if (!$p) {
   </div>
 </div>
 <?php layout_footer(); ?>
+

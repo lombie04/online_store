@@ -63,7 +63,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $pdo->commit();
 
-                redirect('/business_store/login.php?msg=' . urlencode('Retailer application submitted. Wait for admin approval.'));
+                redirect('/login.php?msg=' . urlencode('Retailer application submitted. Wait for admin approval.'));
             }
         } catch (Throwable $e) {
             if (isset($pdo) && $pdo->inTransaction()) $pdo->rollBack();
@@ -117,11 +117,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
 
     <p class="muted">
-      Already have a retailer account? <a href="/business_store/login.php?role=retailer">Login</a>
+      Already have a retailer account? <a href="/login.php?role=retailer">Login</a>
     </p>
     <p class="muted">
-      <a href="/business_store/home.php">Back to Home</a>
+      <a href="/home.php">Back to Home</a>
     </p>
   </div>
 </div>
 <?php layout_footer(); ?>
+

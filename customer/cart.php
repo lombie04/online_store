@@ -9,7 +9,7 @@ require_once __DIR__ . '/../includes/cart.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             cart_update($pid, $qty);
         }
     }
-    redirect('/business_store/customer/cart.php');
+    redirect('/customer/cart.php');
 }
 
 $items = cart_fetch_items($pdo);
@@ -51,11 +51,11 @@ foreach ($items as $it) {
   <div class="bar">
     <div>
       <div style="font-weight:bold;">Your Cart</div>
-      <div class="muted"><a href="/business_store/customer/index.php">Continue shopping</a></div>
+      <div class="muted"><a href="/customer/index.php">Continue shopping</a></div>
     </div>
     <div>
-      <a href="/business_store/customer/orders.php">My Orders</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/customer/orders.php">My Orders</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -93,7 +93,7 @@ foreach ($items as $it) {
       <div class="row">
         <div style="margin-right:auto;" class="muted">Set qty to 0 to remove an item.</div>
         <button type="submit">Update cart</button>
-        <a href="/business_store/customer/checkout.php" style="display:inline-block;padding:10px 14px;border-radius:8px;background:#e9fff0;color:#135a2e;font-weight:bold;text-decoration:none;">Checkout</a>
+        <a href="/customer/checkout.php" style="display:inline-block;padding:10px 14px;border-radius:8px;background:#e9fff0;color:#135a2e;font-weight:bold;text-decoration:none;">Checkout</a>
       </div>
 
       <div class="row">
@@ -104,3 +104,4 @@ foreach ($items as $it) {
 </div>
 </div>
 <?php layout_footer(); ?>
+

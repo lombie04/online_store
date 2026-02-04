@@ -17,3 +17,4 @@ try {
     echo "<p>Connection failed.</p>";
     echo "<pre>" . htmlspecialchars($e->getMessage()) . "</pre>";
 }
+

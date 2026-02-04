@@ -17,7 +17,7 @@ $retailerId = $retailer ? (int)$retailer['id'] : 0;
 
 $id = (int)($_GET['id'] ?? 0);
 if ($id <= 0) {
-    redirect('/business_store/retailer/products.php');
+    redirect('/retailer/products.php');
 }
 $cats = $pdo->query("SELECT id, name FROM categories ORDER BY name ASC")->fetchAll();
 $stmt = $pdo->prepare("
@@ -30,7 +30,7 @@ $stmt->execute([$id, $retailerId]);
 $product = $stmt->fetch();
 
 if (!$product) {
-    redirect('/business_store/retailer/products.php');
+    redirect('/retailer/products.php');
 }
 
 $success = "";
@@ -100,8 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="top">
     <h2>Edit Product</h2>
     <div>
-      <a href="/business_store/retailer/products.php">My Products</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/retailer/products.php">My Products</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -136,3 +136,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 </div>
 <?php layout_footer(); ?>
+

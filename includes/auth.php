@@ -21,7 +21,7 @@ function current_user(): ?array
 function require_login(): void
 {
     if (!is_logged_in()) {
-        redirect('/business_store/login.php');
+        redirect('/login.php');
     }
 }
 
@@ -84,17 +84,17 @@ function role_home_path(array $user): string
         $ret = $stmt->fetch();
 
         if (!$ret) {
-            return '/business_store/retailer/pending.php';
+            return '/retailer/pending.php';
         }
         if ($ret['approval_status'] !== 'approved') {
-            return '/business_store/retailer/pending.php';
+            return '/retailer/pending.php';
         }
-        return '/business_store/retailer/index.php';
+        return '/retailer/index.php';
     }
 
-    if ($user['role'] === 'admin') return '/business_store/admin/index.php';
-    if ($user['role'] === 'staff') return '/business_store/staff/index.php';
-    return '/business_store/customer/index.php';
+    if ($user['role'] === 'admin') return '/admin/index.php';
+    if ($user['role'] === 'staff') return '/staff/index.php';
+    return '/customer/index.php';
 }
 
 function require_approved_retailer(): void
@@ -103,7 +103,7 @@ function require_approved_retailer(): void
     $u = current_user();
 
     if (!$u || $u['role'] !== 'retailer') {
-        redirect('/business_store/dashboard.php');
+        redirect('/dashboard.php');
     }
 
     $pdo = db();
@@ -112,7 +112,8 @@ function require_approved_retailer(): void
     $ret = $stmt->fetch();
 
     if (!$ret || $ret['approval_status'] !== 'approved') {
-        redirect('/business_store/retailer/pending.php');
+        redirect('/retailer/pending.php');
     }
 }
+
 

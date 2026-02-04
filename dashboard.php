@@ -6,3 +6,4 @@ require_login();
 
 $u = current_user();
 redirect(role_home_path($u));
+

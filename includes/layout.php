@@ -289,10 +289,10 @@ a:hover{ text-decoration:none; }
     echo '<header class="nav"><div class="navin">';
 
     echo '<div class="brand">';
-    echo '<a href="/business_store/" style="display:flex;align-items:center;gap:10px;">';
+    echo '<a href="/" style="display:flex;align-items:center;gap:10px;">';
     echo '<span class="logo">';
     if ($logo !== '') {
-        echo '<img src="/business_store/' . e($logo) . '" alt="logo">';
+        echo '<img src="/' . e($logo) . '" alt="logo">';
     }
     echo '</span>';
     echo '<span>' . e($brand) . '</span>';
@@ -302,29 +302,29 @@ a:hover{ text-decoration:none; }
     echo '<nav class="links">';
     if ($u) {
         if ($role === 'customer') {
-            echo '<a href="/business_store/customer/index.php">Storefront</a>';
-            echo '<a href="/business_store/customer/cart.php">Cart</a>';
-            echo '<a href="/business_store/customer/orders.php">My Orders</a>';
+            echo '<a href="/customer/index.php">Storefront</a>';
+            echo '<a href="/customer/cart.php">Cart</a>';
+            echo '<a href="/customer/orders.php">My Orders</a>';
         } elseif ($role === 'retailer') {
-            echo '<a href="/business_store/retailer/index.php">Dashboard</a>';
-            echo '<a href="/business_store/retailer/products.php">Products</a>';
-            echo '<a href="/business_store/retailer/orders.php">Orders</a>';
+            echo '<a href="/retailer/index.php">Dashboard</a>';
+            echo '<a href="/retailer/products.php">Products</a>';
+            echo '<a href="/retailer/orders.php">Orders</a>';
         } elseif ($role === 'staff') {
-            echo '<a href="/business_store/staff/index.php">Dashboard</a>';
-            echo '<a href="/business_store/staff/orders.php">Orders</a>';
+            echo '<a href="/staff/index.php">Dashboard</a>';
+            echo '<a href="/staff/orders.php">Orders</a>';
         } elseif ($role === 'admin') {
-            echo '<a href="/business_store/admin/index.php">Dashboard</a>';
-            echo '<a href="/business_store/admin/users_create.php">Create Users</a>';
-            echo '<a href="/business_store/admin/users_manage.php">Manage Users</a>';
-            echo '<a href="/business_store/admin/retailers_approve.php">Approve Retailers</a>';
-            echo '<a href="/business_store/admin/products_manage.php">Products</a>';
+            echo '<a href="/admin/index.php">Dashboard</a>';
+            echo '<a href="/admin/users_create.php">Create Users</a>';
+            echo '<a href="/admin/users_manage.php">Manage Users</a>';
+            echo '<a href="/admin/retailers_approve.php">Approve Retailers</a>';
+            echo '<a href="/admin/products_manage.php">Products</a>';
         }
-        echo '<a href="/business_store/logout.php">Logout</a>';
+        echo '<a href="/logout.php">Logout</a>';
     } else {
-        echo '<a href="/business_store/home.php">Home</a>';
-        echo '<a href="/business_store/login.php">Login</a>';
-        echo '<a href="/business_store/register.php">Register</a>';
-        echo '<a href="/business_store/retailer_apply.php">Retailer Apply</a>';
+        echo '<a href="/home.php">Home</a>';
+        echo '<a href="/login.php">Login</a>';
+        echo '<a href="/register.php">Register</a>';
+        echo '<a href="/retailer_apply.php">Retailer Apply</a>';
     }
     echo '</nav>';
 
@@ -346,3 +346,4 @@ function layout_footer(): void
 
     echo '</body></html>';
 }
+

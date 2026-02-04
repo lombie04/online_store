@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -37,11 +37,11 @@ $orders = $stmt->fetchAll();
   <div class="bar">
     <div>
       <div style="font-weight:bold;">My Orders</div>
-      <div class="muted"><a href="/business_store/customer/index.php">Storefront</a></div>
+      <div class="muted"><a href="/customer/index.php">Storefront</a></div>
     </div>
     <div>
-      <a href="/business_store/customer/cart.php">Cart</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/customer/cart.php">Cart</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -57,7 +57,7 @@ $orders = $stmt->fetchAll();
     <tbody>
     <?php foreach ($orders as $o): ?>
       <tr>
-        <td><a href="/business_store/customer/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
+        <td><a href="/customer/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
         <td><span class="pill"><?php echo e($o['status']); ?></span></td>
         <td><?php echo e(number_format((float)$o['total_amount'], 2)); ?></td>
         <td><?php echo e((string)$o['created_at']); ?></td>
@@ -68,3 +68,4 @@ $orders = $stmt->fetchAll();
 </div>
 </div>
 <?php layout_footer(); ?>
+

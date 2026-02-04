@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'staff') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -48,10 +48,10 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
   <div class="bar">
     <div>
       <div style="font-weight:bold;">Orders (Staff)</div>
-      <div class="muted"><a href="/business_store/staff/index.php">Back Office Home</a></div>
+      <div class="muted"><a href="/staff/index.php">Back Office Home</a></div>
     </div>
     <div>
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -77,7 +77,7 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
     <tbody>
     <?php foreach ($orders as $o): ?>
       <tr>
-        <td><a href="/business_store/staff/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
+        <td><a href="/staff/order.php?id=<?php echo (int)$o['id']; ?>">#<?php echo (int)$o['id']; ?></a></td>
         <td><span class="pill"><?php echo e($o['status']); ?></span></td>
         <td><?php echo e(number_format((float)$o['total_amount'], 2)); ?></td>
         <td><?php echo e((string)$o['created_at']); ?></td>
@@ -88,3 +88,4 @@ $allStatuses = ['placed','paid','processing','shipped','delivered','cancelled'];
 </div>
 </div>
 <?php layout_footer(); ?>
+

@@ -9,3 +9,4 @@ if (is_logged_in()) {
     redirect(role_home_path($u));
 }
 redirect('/home.php');
+

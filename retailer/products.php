@@ -16,7 +16,7 @@ $stmt->execute([$u['id']]);
 $retailer = $stmt->fetch();
 
 if (!$retailer) {
-    redirect('/business_store/retailer/pending.php');
+    redirect('/retailer/pending.php');
 }
 
 $retailerId = (int)$retailer['id'];
@@ -55,13 +55,13 @@ $products = $stmt->fetchAll();
       <div class="muted">Store: <?php echo e($retailer['store_name']); ?></div>
     </div>
     <div>
-      <a href="/business_store/retailer/index.php">Retailer Home</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/retailer/index.php">Retailer Home</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
   <p>
-    <a class="btn btnAdd" href="/business_store/retailer/product_create.php">Add New Product</a>
+    <a class="btn btnAdd" href="/retailer/product_create.php">Add New Product</a>
   </p>
 
   <table>
@@ -86,8 +86,8 @@ $products = $stmt->fetchAll();
         <td><span class="pill"><?php echo $p['is_active'] ? 'active' : 'inactive'; ?></span></td>
         <td><?php echo e((string)$p['created_at']); ?></td>
         <td>
-          <a class="btn btnEdit" href="/business_store/retailer/product_edit.php?id=<?php echo (int)$p['id']; ?>">Edit</a>
-          <a class="btn btnToggle" href="/business_store/retailer/product_toggle.php?id=<?php echo (int)$p['id']; ?>">
+          <a class="btn btnEdit" href="/retailer/product_edit.php?id=<?php echo (int)$p['id']; ?>">Edit</a>
+          <a class="btn btnToggle" href="/retailer/product_toggle.php?id=<?php echo (int)$p['id']; ?>">
             <?php echo $p['is_active'] ? 'Deactivate' : 'Activate'; ?>
           </a>
         </td>
@@ -98,3 +98,4 @@ $products = $stmt->fetchAll();
 </div>
 </div>
 <?php layout_footer(); ?>
+

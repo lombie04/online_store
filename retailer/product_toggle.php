@@ -16,7 +16,7 @@ $retailerId = $retailer ? (int)$retailer['id'] : 0;
 
 $id = (int)($_GET['id'] ?? 0);
 if ($id <= 0) {
-    redirect('/business_store/retailer/products.php');
+    redirect('/retailer/products.php');
 }
 
 $stmt = $pdo->prepare("SELECT is_active FROM products WHERE id = ? AND retailer_id = ? LIMIT 1");
@@ -24,7 +24,7 @@ $stmt->execute([$id, $retailerId]);
 $p = $stmt->fetch();
 
 if (!$p) {
-    redirect('/business_store/retailer/products.php');
+    redirect('/retailer/products.php');
 }
 
 $new = $p['is_active'] ? 0 : 1;
@@ -32,4 +32,5 @@ $new = $p['is_active'] ? 0 : 1;
 $stmt = $pdo->prepare("UPDATE products SET is_active = ? WHERE id = ? AND retailer_id = ?");
 $stmt->execute([$new, $id, $retailerId]);
 
-redirect('/business_store/retailer/products.php');
+redirect('/retailer/products.php');
+

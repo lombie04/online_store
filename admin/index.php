@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/layout.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'admin') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 layout_header('Admin Dashboard');
@@ -20,28 +20,28 @@ layout_header('Admin Dashboard');
 </div>
 
 <div class="grid menu" style="margin-top:14px;">
-  <a class="tile" href="/business_store/admin/users_create.php">
+  <a class="tile" href="/admin/users_create.php">
     <div class="tile-body">
       <div class="tile-title">Create Users</div>
       <div class="muted">Add staff, retailers, or customers.</div>
     </div>
   </a>
 
-  <a class="tile" href="/business_store/admin/users_manage.php">
+  <a class="tile" href="/admin/users_manage.php">
     <div class="tile-body">
       <div class="tile-title">Manage Users</div>
       <div class="muted">Enable/disable accounts.</div>
     </div>
   </a>
 
-  <a class="tile" href="/business_store/admin/retailers_approve.php">
+  <a class="tile" href="/admin/retailers_approve.php">
     <div class="tile-body">
       <div class="tile-title">Approve Retailers</div>
       <div class="muted">Approve or reject applications.</div>
     </div>
   </a>
 
-  <a class="tile" href="/business_store/admin/products_manage.php">
+  <a class="tile" href="/admin/products_manage.php">
     <div class="tile-body">
       <div class="tile-title">Moderate Products</div>
       <div class="muted">Deactivate/activate any listing.</div>
@@ -50,3 +50,4 @@ layout_header('Admin Dashboard');
 </div>
 
 <?php layout_footer(); ?>
+

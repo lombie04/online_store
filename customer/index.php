@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -72,14 +72,14 @@ $products = $stmt->fetchAll();
     <div class="card" style="padding:0;overflow:hidden;">
       <div style="height:150px;background:#eef2f7;display:flex;align-items:center;justify-content:center;">
         <?php if (!empty($p['image_path'])): ?>
-          <img src="/business_store/<?php echo e($p['image_path']); ?>" alt="" style="max-width:100%;max-height:100%;display:block;">
+          <img src="/<?php echo e($p['image_path']); ?>" alt="" style="max-width:100%;max-height:100%;display:block;">
         <?php else: ?>
           <div class="muted">No image</div>
         <?php endif; ?>
       </div>
       <div style="padding:12px;">
         <div style="font-weight:bold;">
-          <a href="/business_store/customer/product.php?id=<?php echo (int)$p['id']; ?>">
+          <a href="/customer/product.php?id=<?php echo (int)$p['id']; ?>">
             <?php echo e($p['name']); ?>
           </a>
         </div>
@@ -96,3 +96,4 @@ $products = $stmt->fetchAll();
 @media(max-width:520px){ .wrap > div:last-of-type{ grid-template-columns:1fr !important; } }
 </style>
 <?php layout_footer(); ?>
+

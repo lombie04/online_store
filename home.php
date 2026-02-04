@@ -29,16 +29,17 @@ if (is_logged_in()) {
     <div class="muted">Choose how you want to use the platform.</div>
 
     <div class="grid">
-      <a class="btn" href="/business_store/login.php?role=customer">Customer Login</a>
-      <a class="btn" href="/business_store/login.php?role=retailer">Retailer Login</a>
-      <a class="btn" href="/business_store/login.php?role=staff">Back Office (Staff) Login</a>
-      <a class="btn" href="/business_store/login.php?role=admin">Admin Login</a>
+      <a class="btn" href="/login.php?role=customer">Customer Login</a>
+      <a class="btn" href="/login.php?role=retailer">Retailer Login</a>
+      <a class="btn" href="/login.php?role=staff">Back Office (Staff) Login</a>
+      <a class="btn" href="/login.php?role=admin">Admin Login</a>
     </div>
 
     <div class="row">
-      <a class="link" href="/business_store/register.php">Create Customer Account</a>
-      <a class="link" href="/business_store/retailer_apply.php">Apply as Retailer</a>
+      <a class="link" href="/register.php">Create Customer Account</a>
+      <a class="link" href="/retailer_apply.php">Apply as Retailer</a>
     </div>
   </div>
 </div>
 <?php layout_footer(); ?>
+

@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -24,7 +24,7 @@ $stmt->execute([$id, (int)$u['id']]);
 $order = $stmt->fetch();
 
 if (!$order) {
-    redirect('/business_store/customer/orders.php');
+    redirect('/customer/orders.php');
 }
 
 $stmt = $pdo->prepare("
@@ -58,7 +58,7 @@ $hist = $stmt->fetchAll();
     .muted{color:#666;font-size:13px}
 </style>
 <div class="wrap">
-  <p class="muted"><a href="/business_store/customer/orders.php">Back to orders</a></p>
+  <p class="muted"><a href="/customer/orders.php">Back to orders</a></p>
 
   <div class="card">
     <h2 style="margin:0;">Order #<?php echo (int)$order['id']; ?></h2>
@@ -110,3 +110,4 @@ $hist = $stmt->fetchAll();
   </div>
 </div>
 <?php layout_footer(); ?>
+

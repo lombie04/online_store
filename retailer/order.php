@@ -14,10 +14,10 @@ $stmt = $pdo->prepare("SELECT id, store_name FROM retailers WHERE user_id = ? LI
 $stmt->execute([(int)$u['id']]);
 $retailer = $stmt->fetch();
 $retailerId = $retailer ? (int)$retailer['id'] : 0;
-if ($retailerId <= 0) redirect('/business_store/retailer/pending.php');
+if ($retailerId <= 0) redirect('/retailer/pending.php');
 
 $id = (int)($_GET['id'] ?? 0);
-if ($id <= 0) redirect('/business_store/retailer/orders.php');
+if ($id <= 0) redirect('/retailer/orders.php');
 
 $stmt = $pdo->prepare("
   SELECT DISTINCT o.id, o.status, o.total_amount, o.created_at
@@ -28,7 +28,7 @@ $stmt = $pdo->prepare("
 ");
 $stmt->execute([$id, $retailerId]);
 $order = $stmt->fetch();
-if (!$order) redirect('/business_store/retailer/orders.php');
+if (!$order) redirect('/retailer/orders.php');
 
 $stmt = $pdo->prepare("
   SELECT oi.quantity, oi.unit_price, oi.line_total, p.name
@@ -54,7 +54,7 @@ foreach ($items as $it) $subtotal += (float)$it['line_total'];
     .muted{color:#666;font-size:13px}
 </style>
 <div class="wrap">
-  <p class="muted"><a href="/business_store/retailer/orders.php">Back to orders</a></p>
+  <p class="muted"><a href="/retailer/orders.php">Back to orders</a></p>
 
   <div class="card">
     <h2 style="margin:0;">Order #<?php echo (int)$order['id']; ?></h2>
@@ -87,3 +87,4 @@ foreach ($items as $it) $subtotal += (float)$it['line_total'];
   </div>
 </div>
 <?php layout_footer(); ?>
+

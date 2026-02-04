@@ -15,7 +15,7 @@ $stmt->execute([$u['id']]);
 $retailer = $stmt->fetch();
 $retailerId = $retailer ? (int)$retailer['id'] : 0;
 if ($retailerId <= 0) {
-    redirect('/business_store/retailer/pending.php');
+    redirect('/retailer/pending.php');
 }
 $cats = $pdo->query("SELECT id, name FROM categories ORDER BY name ASC")->fetchAll();
 
@@ -113,8 +113,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <div class="top">
     <h2>Add Product</h2>
     <div>
-      <a href="/business_store/retailer/products.php">My Products</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/retailer/products.php">My Products</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -150,3 +150,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
 </div>
 <?php layout_footer(); ?>
+

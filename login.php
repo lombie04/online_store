@@ -54,9 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <div class="hint">
-      <a href="/business_store/register.php">Create Customer Account</a> |
-      <a href="/business_store/retailer_apply.php">Apply as Retailer</a> |
-      <a href="/business_store/home.php">Home</a>
+      <a href="/register.php">Create Customer Account</a> |
+      <a href="/retailer_apply.php">Apply as Retailer</a> |
+      <a href="/home.php">Home</a>
     </div>
 
     <?php if ($error !== ""): ?>
@@ -79,3 +79,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 <?php layout_footer(); ?>
+

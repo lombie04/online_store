@@ -107,3 +107,4 @@ function cart_fetch_items(PDO $pdo): array
 
     return $items;
 }
+

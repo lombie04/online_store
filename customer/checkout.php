@@ -9,14 +9,14 @@ require_once __DIR__ . '/../includes/cart.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'customer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
 $items = cart_fetch_items($pdo);
 
 if (count($items) === 0) {
-    redirect('/business_store/customer/cart.php');
+    redirect('/customer/cart.php');
 }
 
 $error = "";
@@ -82,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pdo->commit();
 
         cart_clear();
-        redirect('/business_store/customer/order.php?id=' . $orderId);
+        redirect('/customer/order.php?id=' . $orderId);
     } catch (Throwable $e) {
         if ($pdo->inTransaction()) {
             $pdo->rollBack();
@@ -105,7 +105,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     .muted{color:#666;font-size:13px}
 </style>
 <div class="wrap">
-  <p class="muted"><a href="/business_store/customer/cart.php">Back to cart</a></p>
+  <p class="muted"><a href="/customer/cart.php">Back to cart</a></p>
 
   <div class="card">
     <h2 style="margin:0;">Checkout</h2>
@@ -141,3 +141,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </div>
 </div>
 <?php layout_footer(); ?>
+

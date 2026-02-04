@@ -7,7 +7,7 @@ require_login();
 
 $u = current_user();
 if ($u['role'] !== 'retailer') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 ?>
 <?php layout_header('Retailer - Index'); ?>
@@ -16,11 +16,12 @@ if ($u['role'] !== 'retailer') {
   <p>Welcome, <?php echo e($u['full_name']); ?></p>
 
   <ul>
-    <li><a href="/business_store/retailer/products.php">My Products</a></li>
-    <li><a href="/business_store/retailer/orders.php">My Orders</a></li>
+    <li><a href="/retailer/products.php">My Products</a></li>
+    <li><a href="/retailer/orders.php">My Orders</a></li>
 
   </ul>
 
-  <p><a href="/business_store/logout.php">Logout</a></p>
+  <p><a href="/logout.php">Logout</a></p>
 </div>
 <?php layout_footer(); ?>
+

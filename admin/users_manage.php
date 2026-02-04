@@ -8,7 +8,7 @@ require_once __DIR__ . '/../includes/helpers.php';
 require_login();
 $u = current_user();
 if ($u['role'] !== 'admin') {
-    redirect('/business_store/dashboard.php');
+    redirect('/dashboard.php');
 }
 
 $pdo = db();
@@ -75,8 +75,8 @@ $users = $stmt->fetchAll();
   <div class="top">
     <h2>Manage Users</h2>
     <div>
-      <a href="/business_store/admin/index.php">Admin Home</a> |
-      <a href="/business_store/logout.php">Logout</a>
+      <a href="/admin/index.php">Admin Home</a> |
+      <a href="/logout.php">Logout</a>
     </div>
   </div>
 
@@ -128,3 +128,4 @@ $users = $stmt->fetchAll();
 </div>
 </div>
 <?php layout_footer(); ?>
+
