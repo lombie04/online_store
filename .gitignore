@@ -1,0 +1,10 @@
+# Secrets / local config
+config.php
+.env
+
+# Uploads (optional: comment this out if you WANT sample images on GitHub)
+uploads/
+
+# OS junk
+Thumbs.db
+.DS_Store
